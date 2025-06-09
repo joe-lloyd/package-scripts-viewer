@@ -1,0 +1,108 @@
+{
+  "name": "package-scripts-viewer",
+  "displayName": "Package Scripts Viewer",
+  "description": "View and run package.json scripts from the sidebar",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:packageScriptsExplorer"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "packageScripts",
+          "title": "Package Scripts",
+          "icon": "media/package.svg"
+        }
+      ]
+    },
+    "views": {
+      "packageScripts": [
+        {
+          "id": "packageScriptsExplorer",
+          "name": "Package Scripts"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "packageScriptsExplorer.refreshEntry",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "packageScriptsExplorer.runScript",
+        "title": "Run Script",
+        "icon": "$(play)"
+      },
+      {
+        "command": "packageScriptsExplorer.addFavourite",
+        "title": "Add to Favourites",
+        "icon": "$(star)"
+      },
+      {
+        "command": "packageScriptsExplorer.removeFavourite",
+        "title": "Remove from Favourites",
+        "icon": "$(star-empty)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "packageScriptsExplorer.refreshEntry",
+          "when": "view == packageScriptsExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "packageScriptsExplorer.runScript",
+          "when": "view == packageScriptsExplorer && viewItem == script",
+          "group": "inline"
+        },
+        {
+          "command": "packageScriptsExplorer.addFavourite",
+          "when": "view == packageScriptsExplorer && viewItem == script && !viewItem.favourite",
+          "group": "inline"
+        },
+        {
+          "command": "packageScriptsExplorer.removeFavourite",
+          "when": "view == packageScriptsExplorer && viewItem == script && viewItem.favourite",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/package-scripts-viewer.git"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
