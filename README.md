@@ -2,6 +2,8 @@
 
 A VS Code extension that displays all package.json scripts from your workspace in a sidebar view, allowing you to easily run them with a single click.
 
+![Package Scripts Viewer Screenshot](screenshot.png)
+
 ## Features
 
 - Displays all scripts from all package.json files in your workspace
@@ -16,6 +18,26 @@ A VS Code extension that displays all package.json scripts from your workspace i
 2. Click on the Package Scripts icon in the Activity Bar
 3. View all available scripts from your workspace
 4. Click the play button next to a script to run it in a terminal
+
+## Installation
+
+### Manual Installation (.vsix file)
+
+If you have the `.vsix` file for this extension, you can install it manually:
+
+1. Open VS Code
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar or pressing `Ctrl+Shift+X`
+3. Click on the ellipsis (...) at the top-right corner of the Extensions view
+4. Select "Install from VSIX..." from the dropdown menu
+5. Navigate to the location of your `.vsix` file, select it, and click "Install"
+
+Alternatively, you can install the extension from the command line:
+
+```bash
+code --install-extension package-scripts-viewer-0.0.1.vsix
+```
+
+Note: Replace `package-scripts-viewer-0.0.1.vsix` with the actual filename of the extension if different.
 
 ## Requirements
 
